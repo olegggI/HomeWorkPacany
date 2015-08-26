@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+
+   Реализуйте функцию findStringOnce таким образом, чтобы она возвращала массив,
+   состоящий только из уникальных элементов исходного массива.
+
+   Попробуйте добиться максимальной производительности.
+   Для этого используйте объект obj(строка № 18), а так же метод Object.Keys(строка № 22).
+
+-->
+<script>
+    function findStringOnce(data) {
+        var result = {};
+
+        data.map(function(item) {
+            result[item] = item;
+        });
+
+        return Object.keys(result);
+    }
+
+
+    var initialArr = ["First", "Second", "First", "Third", "Fourth", "Fourth" ];
+
+    var strings = findStringOnce(initialArr);
+
+    console.log("Initial array: " + initialArr.join(', '));
+    console.log("</br>");
+    console.log("Unique elements: " + strings.join(', '));
+</script>
+</body>
+</html>
