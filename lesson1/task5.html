@@ -13,20 +13,20 @@
 -->
 <script>
     function toCamelCase(str) {
-        var     separatorIndex,
-                cutString,
-                result;
+        var     separator = '-',
+                temp,
+                result = [];
 
-        for (var i = 0; i < str.length; i++) {
-            separatorIndex = str.indexOf('-');
-            if (separatorIndex > 0) {
-                // cut the - symbol from sting
-                cutString = str.replace(/-/g, "");
+        var splitString = str.split(separator);
 
-                result = cutString.slice(0, separatorIndex) + cutString.charAt(separatorIndex).toUpperCase() + cutString.slice(separatorIndex + 1);
+        for (var i = 0; i < splitString.length; i++) {
+            temp = splitString[i].toLowerCase();
+            if (i > 0) {
+                temp = temp.charAt(0).toUpperCase() + temp.substring(1);
             }
+            result.push(temp);
         }
-        return result;
+        return result.join("");
     }
 
     console.log(toCamelCase("background-color"));
