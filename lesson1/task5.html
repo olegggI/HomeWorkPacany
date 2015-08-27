@@ -13,11 +13,24 @@
 -->
 <script>
     function toCamelCase(str) {
-        //...
+        var     separatorIndex,
+                cutString,
+                result;
+
+        for (var i = 0; i < str.length; i++) {
+            separatorIndex = str.indexOf('-');
+            if (separatorIndex > 0) {
+                // cut the - symbol from sting
+                cutString = str.replace(/-/g, "");
+
+                result = cutString.slice(0, separatorIndex) + cutString.charAt(separatorIndex).toUpperCase() + cutString.slice(separatorIndex + 1);
+            }
+        }
+        return result;
     }
 
-    alert(toCamelCase("background-color")); // должно вывести backgroundСolor
-    alert(toCamelCase("list-style-image")); // должно вывести listStyleImage
+    console.log(toCamelCase("background-color"));
+    console.log(toCamelCase("list-style-image")); // должно вывести listStyleImage
 </script>
 </body>
 </html>
