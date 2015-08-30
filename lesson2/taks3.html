@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+
+    Создайте функции operate, add и multiply так, чтобы выражение с 17-й строки соответствовало
+    выражению ( 2 + 3 ) + ( 4 * 5 )
+
+-->
+<script>
+    function add(a, b) {
+        var addSum;
+
+        addSum = a+b;
+        return addSum;
+    }
+
+    function multiply(a, b) {
+        var multSum;
+
+        multSum = a*b;
+        return multSum;
+    }
+
+    function operate (func, a, b) {
+        var operation;
+
+        operation = func(a,b);
+        return operation;
+    }
+
+    var i = operate(add, operate(add, 2, 3), operate(multiply, 4, 5)); // Должно соответствовать выражению (2 + 3) + (4 * 5)
+
+    document.write(i); // Должно быть выведено 25
+
+</script>
+</body>
+</html>

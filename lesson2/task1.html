@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function copyPropertyNamesToArray(obj, arr) {
+        var prop,
+            result;
+
+        result =  arr === undefined ? [] : arr;
+        for (prop in obj) {
+            result.push(prop);
+        }
+        return result;
+    }
+
+    var obj1 = { a: 10, b: 20 };
+    var obj2 = { c: 30, d: 40 };
+
+    var a = copyPropertyNamesToArray(obj1);
+
+    copyPropertyNamesToArray(obj2, a);
+    alert(a); // Выводится "a,b,c,d"
+</script>
+</body>
+</html>
