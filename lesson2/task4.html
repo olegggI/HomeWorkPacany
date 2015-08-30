@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+
+    Реализуйте методы myFilter и myMap по аналогиии с ECMAScript5 методами filter и map.
+
+-->
+<script>
+    function myFilter(arr, /* функция проверки */ predicat) {
+        var filtered = [];
+
+        for (var i = 0; i < arr.length; i++) {
+            if (predicat(arr[i]) === true) {
+                filtered.push(arr[i]);
+            }
+        }
+        return filtered;
+    }
+
+    function myMap(/* массив */ arr, /* функция */ func) {
+        var mapped = [],
+                temp;
+
+        for (var i = 0; i < arr.length; i++) {
+            temp = func(arr[i]);
+            mapped.push(temp);
+        }
+        return mapped;
+    }
+
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    var result = myFilter(arr, function (el) { return el % 2 === 0; });
+
+    alert("Filtered elements: " + result); // Должно быть выведено "Filtered elements: 2, 4, 6, 8, 10"
+
+    result = myMap(arr, function (el) { return el * 2; });
+
+    alert("Mapped elements: "+result); // Должно быть выведено "Mapped elements: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20"
+</script>
+</body>
+</html>
