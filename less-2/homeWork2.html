@@ -1,0 +1,47 @@
+﻿<!--
+
+    Реализуйте функцию sum. Данная функция принимает массив(объект подобный массиву) целых чисел
+    и возвращает сумму всех его значений, игнорируя при этом значения null и undefined 
+
+    прим. Объект подобный массиву - объект имеющий свойство length
+-->
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        function sum(arr) {
+            //... Ваш код
+        }
+
+        var result = sum([1, 2, null, undefined, 3]);
+        alert(result); // Должно вывести "6"
+
+        result = sum({ "0": 5, "1": 10, "2": 15, length: 3 });
+        alert(result); // Должно вывести 30
+
+        result = sum([1, 2, 3, "string"]); // В консоли должна появиться сообщение об ошибке "sum(): аргументы должны быть числами"
+        // Оибка генерируется следующим кодом: throw new Error("sum(): аргументы должны быть числами");
+
+
+        //РЕШЕНИЕ
+        var myArr = [1, 2, null, undefined, 3];
+        function getSum(arr) {
+                    var result = 0;
+
+                    for(var i = 0; i < arr.length; i++){
+                        if(arr[i] == undefined || null){
+                            continue;
+                        } else if(typeof arr[i] == 'string'){
+                            throw new Error("sum(): аргументы должны быть числами");
+                        }
+                        result += arr[i];
+                    }
+                    return result
+                }
+        getSum(myArr)
+    </script>
+</body>
+</html>
