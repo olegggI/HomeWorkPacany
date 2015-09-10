@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+
+Создайте класс Circle. В нем создайте свойство radius, совйство конструктора PI, а так же метод area,
+расчитывающий площадь круга и статический метод max, принимающий два круга и возвращающий круг с
+большим радиусом.
+
+-->
+<script>
+
+    function Circle(radius, PI) {
+        this.radius = radius;
+        this.PI = PI;
+        this.area = function() {
+            var area;
+            area = radius*radius*PI;
+            return area;
+        }
+    }
+
+    Circle.max = function() {
+        if (circle1 > circle2) {
+            return circle1;
+        } else {
+            return circle2;
+        }
+    };
+
+    // Создаем круг с радиусом 10
+    var circle1 = new Circle(10, 3.14);
+    console.log(circle1);
+     //Выводим на экран его площадь
+    document.write("circle1 area = " + circle1.area());
+    // Создаем второй круг с радиусом 15
+    var circle2 = new Circle(15);
+    // Находим круг с большим радиусом
+    var maxCircle = Circle.max(circle1, circle2);
+    console.log(maxCircle);
+    // Выводим его радиус
+    document.write("</br>max circle radius = " + maxCircle.radius); // Должно быть выведено 15
+</script>
+</body>
+</html>
