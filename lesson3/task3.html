@@ -13,7 +13,6 @@
     Добавьте в калькулятор метод addOperation для добавления новых операций (см. строку 27 и 28).
 
 -->
-
 <script>
 
     // Конструктор калькуляторов
@@ -23,13 +22,24 @@
             "-": function (a, b) { return a - b; }
         };
 
+        /**
+         * Add new operation to the supportedOperations object
+         *
+         * @param operant{string},
+         * @param callback{function}
+         * */
         this.addOperation = function(operant, callback) {
-            //add new operation to the supportedOperations array
             supportedOperations[operant] = callback;
         };
 
+        /**
+         * Calculate numbers received in expression
+         *
+         * @param expression
+         * @returns {method}
+         */
         this.calculate = function (expression) {
-            var args = this.parse(expression), //receive an array with parsed string
+            var args = this.parse(expression), //receive an object with parsed string
                 operation = args.operant, //determine type of operation
                 method = supportedOperations[operation]; //define what method to call to operate numbers
 
@@ -38,13 +48,15 @@
                 return method(args.number1, args.number2);
             } else {
                 alert("The operation" + "' " + operation + " '"  + "is not supported by this application. Run addOperation method first.");
-
-                return false;
             }
 
         };
 
-        //parse string parameter in the function
+        /**
+         *
+         * @param expression {String}
+         * @returns {{number1: {Int}, operant: {String}, number2: {Number}}}
+         */
         this.parse = function (expression) {
             var     num1,
                     num2,
@@ -69,8 +81,8 @@
     alert(calc.calculate("3 + 7")); // Должно выводиться 10
     alert(calc.calculate("7 - 3")); // Должно выводиться 4
 
-//    calc.addOperation("*", function (a, b) { return a * b; });
-//    calc.addOperation("/", function (a, b) { return a / b; });
+    calc.addOperation("*", function (a, b) { return a * b; });
+    calc.addOperation("/", function (a, b) { return a / b; });
 
     alert(calc.calculate("3 * 7")); // Должно выводиться 21
     alert(calc.calculate("8 / 4")); // Должно выводиться 2
