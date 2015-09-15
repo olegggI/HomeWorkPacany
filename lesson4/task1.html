@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+
+    Используя метод App.define, рассмотренный на уроке создайте пространство имен App.utils.shapes. В этом пространстве имен создайте конструктор Rectangle,
+    который будет принимать аргумент weight и height. В теле конструктора создайте частные свойтсва weight и height c методами доступа getWeight и getHeight.
+    В прототип класса Recatengle добавьте метод area, который будет возвращать площадь прямоугольника.
+
+-->
+<script>
+    var App = App || {};
+
+    App.define = function (namespace) {
+        var parts = namespace.split("."),
+                parent = App,
+                i;
+
+        // убрать начальный префикс если это имя глобальной переменной
+        if (parts[0] == "App") {
+            parts = parts.slice(1); // ['utils', 'dom']
+        }
+
+        // если в глобальном объекте нет свойства - создать его.
+        for (i = 0; i < parts.length; i++) {
+
+            if (typeof parent[parts[i]] == "undefined") {
+                parent[parts[i]] = {};
+            }
+
+            parent = parent[parts[i]];
+        }
+        return parent;
+    }
+</script>
+
+<script>
+    //**********************************************************************************
+    // Тут должен быть код, создающий пространство имен "utils.shapes" и класс Rectangle
+    //**********************************************************************************
+    App.define("App.utils.shapes");
+
+    App.utils.shapes.Rectangle = function(width, height) {
+        var     privateWidth = width,
+                privateHeight = height;
+
+        this.getWidth = function () {
+            return privateWidth;
+        };
+
+        this.getHeight = function () {
+            return privateHeight;
+        };
+
+        (function(Rectangle){
+            Rectangle.prototype.area = function () {
+                return privateWidth * privateHeight;
+            };
+        }(App.utils.shapes.Rectangle));
+
+    };
+
+    var rect = new App.utils.shapes.Rectangle(4, 8);
+    console.log(rect.area());
+
+</script>
+</body>
+</html>

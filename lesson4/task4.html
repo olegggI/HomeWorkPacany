@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+     Напишите пример, который доказывал бы, что при использовании шаблона "заимствование конструктора"
+     xне наследуются свойства прототипа родителя.
+-->
+<script>
+    function Animal(name) {
+        this.name = name || "Spiky";
+    }
+
+    Animal.prototype.jump = function() {
+        alert("My name is " + this.name + "I can jump");
+    };
+
+    function Cat(name) {
+        Animal.apply(this, arguments);
+    }
+
+    var kitten = new Cat("Mur-mur");
+
+    alert(kitten.name);
+    alert(kitten.jump);
+</script>
+</body>
+</html>

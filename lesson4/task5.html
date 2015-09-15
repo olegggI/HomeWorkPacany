@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!--
+     Реализуйте шаблон "Совместное использование прототипа" на примере классов Animal и Cat.
+     Докажите что объекты будут использовать один и тот же прототип и если дочерний объек поменяет прототип это скажется на родительском объеке.
+-->
+<body>
+    <script>
+        function Animal(name,legsNumber) {
+            this.name = name || "Mad Max";
+            this.legsNumber = legsNumber;
+        }
+
+        Animal.prototype.jump = function () {
+            var isJumping = false;
+            return isJumping;
+        }
+
+        function Cat() {}
+
+        function Dog(){}
+
+        inherit(Cat, Animal);
+
+        inherit(Dog, Animal);
+
+        function inherit(child, parent) {
+            child.prototype = parent.prototype;
+        }
+
+        Cat.prototype.jump = function() {
+            var isJumping = true;
+            return isJumping;
+        }
+
+        var kitten = new Cat();
+        console.log(kitten.name);
+        kitten.legsNumber = 4;
+        console.log(kitten.jump());
+
+        var helloKitty = new Cat();
+        console.log(helloKitty.jump());
+
+        var doggy = new Dog();
+        console.log(doggy.jump());
+
+
+
+    </script>
+</body>
+</html>
