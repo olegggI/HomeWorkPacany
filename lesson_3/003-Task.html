@@ -1,0 +1,71 @@
+﻿<!--
+
+    Реализуйте конструктор Calculator, который создает расширяемые объекты-калькуляторы.
+    По умолчанию калькулятор должен поддерживать две операции: "+" и "-" (см. строку 24 и 25)
+
+    Добавьте в калькулятор метод addOperation для добавления новых операций (см. строку 27 и 28).
+
+-->
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+
+        // Конструктор калькуляторов
+        function Calculator() {
+            var newOperation = {
+            "+": function(a, b) {return a + b;},
+            "-": function(a, b) {return a - b;}
+            }
+
+            this.addOperation = function(operant,callback) {
+                newOperation[operant] = callback;
+            };
+
+            this.calculate = function(something) {
+                var numbers = this.parse(something);
+                var operation = numbers.operant;
+                var method = newOperation[operation];
+
+                
+                if (operation) {
+                    return operation(numbers[0], numbers[1]);
+                }
+                else {
+                    alert("Error");
+                }
+            };
+
+        this.parse = function(something) {
+            var arr2 = [];
+            for (var i = 0; i <something.length; i++) {
+ 
+                if (!isNaN(parseInt(something[i]))) {
+                    arr2.push(parseInt(something[i]));
+                } else {
+                    if (something[i] in newOperation){
+                        arr2.operant = newOperation[something[i]]
+                    }
+                }
+            } 
+            return arr2;
+
+        }
+}
+
+        var calc = new Calculator();
+
+        alert(calc.calculate("3 + 7")); // Должно выводиться 10
+        alert(calc.calculate("7 - 3")); // Должно выводиться 4
+
+         calc.addOperation("*", function (a, b) { return a * b; });
+         calc.addOperation("/", function (a, b) { return a / b; });
+
+         alert(calc.calculate("3 * 7")); // Должно выводиться 21
+         alert(calc.calculate("8 / 4")); // Должно выводиться 2
+    </script>
+</body>
+</html>
