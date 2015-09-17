@@ -13,32 +13,32 @@
 <body>
     <script>
 
-function copyPropertyNamesToArray(obj, arr) {
- if (arr === undefined) {
-     var result = [];
-     for (var k in obj) {
-       result.push(k)
-     }
-     return result;
- } else {
-     var result = [];
-     result.push(arr)
-     for (var k in obj) {
-       result.push(k)
-     }
-     return result;
- }
- }
+    function copyPropertyNamesToArray(obj, arr) {
+        if (arr === undefined) {
+            var result = [];
+            for (var k in obj) {
+                result.push(k)
+            }
+            return result;
+        } else {
+            var result = [];
+            result.push(arr)
+            for (var k in obj) {
+                result.push(k)
+            }
+            return result;
+        }
+    }
 
- var obj1 = { a: 10, b: 20 };
- var obj2 = { c: 30, d: 40 };
+    var obj1 = { a: 10, b: 20 };
+    var obj2 = { c: 30, d: 40 };
 
- var a = copyPropertyNamesToArray(obj1);
-alert(a);
+    var a = copyPropertyNamesToArray(obj1);
+    alert(a);
 
- var b = copyPropertyNamesToArray(obj2, a);
+    var b = copyPropertyNamesToArray(obj2, a);
 
- alert(b); // Выводится "a,b,c,d"
+    alert(b); // Выводится "a,b,c,d"
     </script>
 </body>
 </html>

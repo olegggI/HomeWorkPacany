@@ -1,0 +1,62 @@
+﻿﻿<!--
+    
+    Напишите скрипт, который будет анимировать параграф, находящийся в <div id="my_box"> изменением цвета текста. 
+    Реализуйте функцию-обработчик "stopTextColor" так, чтобы при нажатии на кнопку Stop анимация прекращалась
+     
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>setInterval/clearInterval example</title>
+    <script>
+       //... Ваш код
+       function changeColor () {
+       		
+       		// – random change font color 
+       		document.getElementById("my_box").style.color=getRandomColor();
+
+       		// – random change font family (fust fo fun :-) 
+    		var fontType = [ "Times New Roman", "Georgia", "Geneva", "Helvetica"];
+			var num = Math.floor(Math.random()*4);
+
+       		document.getElementById("my_box").style.fontFamily=fontType[num];
+
+       		//document.getElementById("my_box").style.fontSize=Math.random() * 36 + "px"; // – random change font size (fust fo fun :-) 
+
+			timer = setTimeout(changeColor, 0500);	
+       }       
+
+       function changeFontSize () {
+       		document.getElementById("my_box").style.fontSize=Math.floor(Math.random() * (95 - 14)) + 14 + "px"; // – random change font size (fust fo fun :-) 
+       }
+
+       // – random HEX color
+		function getRandomColor() {
+			
+			var letters = '0123456789ABCDEF'.split('');
+    		var color = '#';
+    		
+    		for (var i = 0; i < 6; i++ ) {
+        		color += letters[Math.floor(Math.random() * 16)];
+    		}
+
+    		return color;
+		}
+
+       function stopTextColor () {
+       		clearTimeout(timer);
+       }
+
+    </script>
+</head>
+
+<body onload="changeColor();">
+    <button onclick="stopTextColor();">Stop</button>
+    <button onclick="changeFontSize();">Change Font Size</button>
+
+    <div id="my_box">
+        <p>Hello World</p>
+    </div>
+</body>
+</html>

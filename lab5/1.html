@@ -1,0 +1,27 @@
+﻿<!-- 
+
+    Реализуйте функцию startTime, которая будет каждую секунду обновлять время в контейнере с id = "time"
+
+-->
+<!DOCTYPE html>
+<html>
+<body onLoad="startTime()">
+
+    <div id="time"></div>
+
+    <script>
+		function startTime() {
+	    	
+	    	var date = new Date(),
+	    		hours = date.getHours(),
+	    		minutes = date.getMinutes(),
+	    		seconds = date.getSeconds();
+
+	    	document.getElementById("time").innerHTML = hours + ":" + minutes + ":" + seconds;
+	    	
+	    	setTimeout(startTime, 1000);
+		}
+    </script>
+
+</body>
+</html>
