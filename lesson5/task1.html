@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="time"></div>
+<script>
+    function updateClock() {
+        var     now = new Date(),
+                time = now.getHours() + ':' + now.getMinutes() + ': ' + now.getSeconds(),
+                timeContainer = document.getElementById('time');
+
+        timeContainer.innerHTML = time;
+        //document.write(time);
+
+        setTimeout(updateClock, 1000);
+    }
+
+    updateClock();
+
+</script>
+</body>
+</html>
