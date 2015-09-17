@@ -17,12 +17,49 @@
         // Конструктор калькуляторов
         function Calculator() {
 
+          var methods = {
+            "-": function(a, b) {
+              return a - b;
+            },
+            "+": function(a, b) {
+              return a + b;
+            }
+          };
+
+          this.calculate = function(str) {
+
+            var split = str.split(' '),
+            a = +split[0],
+            op = split[1],
+            b = +split[2]
+
+            if (!methods[op] || isNaN(a) || isNaN(b)) {
+              return NaN;
+            }
+
+            return methods[op](+a, +b);
+          }
+
+          this.addOperation = function(name, func) {
+            methods[name] = func;
+          };
         }
 
-        var calc = new Calculator();
+        var calc = new Calculator;
 
-        alert(calc.calculate("3 + 7")); // Должно выводиться 10
-        alert(calc.calculate("7 - 3")); // Должно выводиться 4
+        calc.addOperation("*", function(a, b) {
+          return a * b;
+        });
+        calc.addOperation("/", function(a, b) {
+          return a / b;
+        });
+
+
+        console.log(calc.calculate("3 + 7")); // Должно выводиться 10
+        console.log(calc.calculate("7 - 3")); // Должно выводиться 4
+
+        console.log(calc.calculate("3 * 7")); // Должно выводиться 21
+        console.log(calc.calculate("8 / 4")); // Должно выводиться 2
 
         // calc.addOperation("*", function (a, b) { return a * b; });
         // calc.addOperation("/", function (a, b) { return a / b; });
@@ -30,9 +67,6 @@
         // alert(calc.calculate("3 * 7")); // Должно выводиться 21
         // alert(calc.calculate("8 / 4")); // Должно выводиться 2
     </script>
-
-
-
 
 </body>
 </html>
