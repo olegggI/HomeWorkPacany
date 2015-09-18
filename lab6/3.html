@@ -1,0 +1,41 @@
+﻿<!-- 
+
+    Напишите функцию countTags, которая рекурсивно проходится по DOM дереву начиная с элемента, который передается в качестве аргумента.
+    Функция должна подсчитаывать количество встретившихся HTML тегов при обходе дерева и возвращать это значение.
+
+-->
+<head>
+    <script>
+        // Функция для рекурсивного обхода DOM дерева
+        function countTags(n) {
+            
+            var numtags = 0; // Инициализируем счетчик тегов
+            
+            if (n.nodeType == 1 /*Node.ELEMENT_NODE*/) // Проверяем, является ли n объектом Element
+                numtags++; // Если это так, увеличиваем счетчик
+                var children = n.childNodes; // Получаем все дочерние элементы n
+            
+            for(var i=0; i < children.length; i++) { // Цикл по всем дочерним элементам
+                numtags += countTags(children[i]); // Рекурсия по всем дочерним элементам
+            }
+        
+            return numtags;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+    </div>
+
+    <script>
+        var count = countTags(document.getElementById("container"));
+
+        alert(count); // Должна вернуть 6(включая тег <div id ="container">
+    </script>
+</body>
