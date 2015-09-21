@@ -1,0 +1,44 @@
+﻿<!--
+    
+    Напишите скрипт, который будет анимировать параграф, находящийся в <div id="my_box"> изменением цвета текста. 
+    Реализуйте функцию-обработчик "stopTextColor" так, чтобы при нажатии на кнопку Stop анимация прекращалась
+     
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>setInterval/clearInterval example</title>
+    <script>
+    
+        function getRandomColor() {
+            var letters = 'ABCDE'.split('');
+            var color = '#';
+            for (var i=0; i<3; i++ ) {
+                color += letters[Math.floor(Math.random() * letters.length)];
+            }
+        return color;
+        }
+
+        function changeColor() {
+            
+            document.getElementById("my_box").style.color=getRandomColor();
+
+            timer = setTimeout(changeColor, 0500);  
+
+        }
+
+        function stopTextColor() {
+              clearTimeout(timer);
+        }
+
+    </script>
+</head>
+
+<body onload="changeColor();">
+    <div id="my_box">
+        <p>Hello World</p>
+    </div>
+    <button onclick="stopTextColor();">Stop</button>
+</body>
+</html>

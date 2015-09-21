@@ -1,0 +1,46 @@
+﻿<!-- 
+
+    Реализуйте функцию getText(n), которая возвращает текстовое содержимое элемента n и всех его дочерних элементов.    
+    
+-->
+
+<html>
+<head>
+    <title></title>
+    <script>
+        function getText(n) {
+
+            var temp = "";
+            for (var i = 0; i < n.childNodes.length; ++i) {
+                var temp2 = n.childNodes[i];
+                if (temp2.nodeType != 1) {
+                    continue;
+                }
+
+            temp += temp2.innerHTML;
+            }
+            return temp;
+        }
+    </script>
+
+    <script>
+        window.onload = function () {
+
+            var text = getText(document.getElementById("container"));
+            alert(text);
+            // Должно выводится: 
+            // Paragraph1.
+            // Paragraph2.
+            // Paragraph3.
+        }
+    </script>
+</head>
+<body>
+
+    <div id="container">
+        <p>Paragraph1.</p>
+        <p>Paragraph2.</p>
+        <p>Paragraph3.</p>
+    </div>
+</body>
+</html>
