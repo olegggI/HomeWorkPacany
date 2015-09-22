@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+    Реализуйте функцию getElements, которая показывает количество тегов <input> в документе.
+-->
+<script>
+    function getElements() {
+        var inputNum;
+
+        inputNum = document.getElementsByTagName("input").length;
+        document.write(inputNum);
+    }
+</script>
+<input type="text" size="20"><br>
+<input type="text" size="20"><br>
+<input type="text" size="20"><br>
+<br>
+<input type="button" onclick="getElements()" value="Посчитать количество тегов <input>">
+</body>
+</html>
