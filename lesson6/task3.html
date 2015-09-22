@@ -6,15 +6,21 @@
     <script>
         // Функция для рекурсивного обхода DOM дерева
         function countTags(n) {
-            var temp;
+            var     counter = 0,
+                    childElems,
+                    i,
+                    result;
 
-            if(n.hasChildNodes()) {
-                temp = n.childElementCount;
-                n = 1;
-                return temp + n;
-            } else {
-                return n;
+            if (n.nodeType == 1) {
+                counter++;
+                childElems = n.childNodes;
+
+                for (i = 0; i < childElems.length; i++) {
+                    counter += countTags(childElems[i]);
+                }
             }
+            result = counter;
+            return result;
         }
     </script>
 </head>
@@ -25,9 +31,13 @@
 -->
 <div id="container">
     <p>1</p>
+
     <p>2</p>
+
     <p>3</p>
+
     <p>4</p>
+
     <p>5</p>
 </div>
 <script>
