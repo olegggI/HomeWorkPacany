@@ -37,9 +37,27 @@
     </script>
 
     <script>
-        //**********************************************************************************
-        // Тут должен быть код, создающий пространство имен "utils.shapes" и класс Rectangle
-        //**********************************************************************************
+        App.define("App.utils.shapes");
+        App.utils.shapes.Rectangle = function(width, height) {
+            var     privateWidth = width,
+            privateHeight = height;
+            this.getWidth = function () {
+                return privateWidth;
+            };
+            this.getHeight = function () {
+                return privateHeight;
+            };
+            (function(Rectangle){
+                Rectangle.prototype.area = function () {
+                    return privateWidth * privateHeight;
+                };
+
+            }(App.utils.shapes.Rectangle));
+        };
+
+        var rect = new App.utils.shapes.Rectangle(5, 10);
+        alert(rect.area());
+
     </script>
 
 </body>

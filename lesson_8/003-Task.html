@@ -1,0 +1,36 @@
+<!--  
+    
+    Создайте кнопку, убегающую от пользователя, если тот хочет её нажать.
+    
+-->
+
+<html>
+
+<head>
+	<style type="text/css">
+		div{
+		    position: absolute;
+		    top:0;
+		    left:0;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+            var div = document.getElementById("run");
+
+            div.onmousemove = function(event) {
+			    div.style.left = Math.random()*window.innerWidth;
+			    div.style.top = Math.random()*window.innerHeight;
+				}
+            
+        }
+	</script>
+</head>
+
+<body>
+ <div id="run">
+ 	 <button id="butt">Push me</button>
+ </div>
+</body>
+
+</html>

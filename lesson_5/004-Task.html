@@ -1,0 +1,33 @@
+﻿<!--
+    
+    Напишите регулярное выражение, которое сможет распарсить веб адрес.
+     
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+
+        var url = /(http):\/\/(?:www\.)?([-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b)*(\/[\/\d\w\.-]*)*(?:[\?])*(.+)*/;      // <= Реализуйте регулярное выражение
+        var text = "Курсы программирования и цены: http://itlabs.net.ua/courses/javascript-dlya-nachinayuschih";
+
+        var result = text.match(url);
+
+        if (result != null) {
+            var fullurl = result[0];    // Должен содержать "http://itlabs.net.ua/courses/javascript-dlya-nachinayuschih"
+            var protocol = result[1];   // Должен содержать "http"
+            var host = result[2];       // Должен содержать "itlabs.net.ua"
+            var path = result[3];       // Должен содержать "courses/javascript-dlya-nachinayuschih"
+        }
+
+        alert(fullurl);     
+        alert(protocol);     
+        alert(host);         
+        alert(path);         
+
+    </script>
+</body>
+</html>
