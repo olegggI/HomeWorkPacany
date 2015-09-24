@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #escape-button {
+            background-color: #1ff3e5;
+            width: 200px;
+            height: 100px;
+            border: 1px solid #f37f1b;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #escape-button label::after {
+            content: "";
+            background: url("images/6837.png") no-repeat;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 50px;
+            left: 75px;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+<!--
+    Создайте кнопку, убегающую от пользователя, если тот хочет её нажать.
+-->
+</body>
+<button id="escape-button">
+    <label>Catch me if you can!</label>
+</button>
+<script>
+    var width = screen.width - 127;
+    var height = screen.height - 111;
+
+    var button = document.getElementById('escape-button');
+
+    button.addEventListener("mouseover", escapeHandler);
+
+    function escapeHandler() {
+        var top = Math.random() * height;
+        var left = Math.random() * width;
+        button.style.top = top + "px";
+        button.style.left = left + "px";
+    }
+</script>
+</html>

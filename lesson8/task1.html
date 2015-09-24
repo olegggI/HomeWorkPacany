@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+
+    Создайте контейнер div с текстом "Mouse Over Me".
+    Сделайте так, чтобы при наведении на него текст "Mouse Over Me" менялся на "Thank You"
+
+-->
+<div class="hover-div">
+    Mouse over me
+</div>
+<script>
+    window.onload = function () {
+
+        var hoverDiv = document.getElementsByClassName('hover-div')[0];
+
+        function handlerOn() {
+            var text = "Thank you";
+            hoverDiv.innerText = text;
+            console.log(hoverDiv);
+        }
+
+        function handlerOut() {
+            var text = "Mouse over me";
+            hoverDiv.innerText = text;
+            console.log(hoverDiv);
+        }
+
+        hoverDiv.addEventListener("mouseover", handlerOn);
+        hoverDiv.addEventListener("mouseout", handlerOut);
+
+
+    }
+</script>
+</body>
+</html>
